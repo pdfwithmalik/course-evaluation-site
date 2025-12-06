@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Course Evaluation Form — Government Polytechnic Institute Wari</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --accent:#123b66;
+      --muted:#6b7280;
+      --radius:10px;
+      --gap:14px;
+    }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:#111827;
+      line-height:1.4;
+      padding:28px;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+    }
+    header{
+      background:linear-gradient(90deg,#ffffff 0%, #f8fafc 100%);
+      padding:18px 22px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(17,24,39,0.06);
+      margin-bottom:18px;
+    }
+    header h1{ margin:0; font-size:20px; color:var(--accent); }
+    header p{ margin:6px 0 0; color:var(--muted); font-size:14px; }
+
+    form.card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 6px 30px rgba(17,24,39,0.06);
+    }
+
+    .intro{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:16px;
+      white-space:pre-wrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:var(--gap);
+    }
+
+    label.field{
+      display:block;
+      font-size:14px;
+      color:#111827;
+      margin-bottom:6px;
+    }
+    input[type="text"]{
+      width:100%;
+      padding:9px 10px;
+      border-radius:8px;
+      border:1px solid #e6e9ef;
+      box-sizing:border-box;
+      font-size:14px;
+      background:#fff;
+    }
+
+    section.section{
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px solid #eef2f7;
+    }
+    section.section h2{
+      margin:0 0 10px;
+      font-size:16px;
+      color:var(--accent);
+    }
+    .question{
+      margin-bottom:10px;
+      padding:10px;
+      border-radius:8px;
+      background:#fbfdff;
+      border:1px solid #f0f4f8;
+    }
+    .qtext{
+      font-size:14px;
+      color:#0f172a;
+      margin-bottom:8px;
+    }
+
+    .options{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .opt{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    input[type="radio"] { accent-color: var(--accent); }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      justify-content:flex-end;
+      margin-top:18px;
+    }
+    button.btn{
+      padding:10px 16px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+    }
+    button.primary{
+      background:var(--accent);
+      color:white;
+    }
+    button.ghost{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid #dbe7f4;
+    }
+
+    .note{ font-size:13px; color:var(--muted); margin-top:10px; }
+
+    /* responsive */
+    @media (max-width:760px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    /* small success */
+    .success {
+      display:none;
+      padding:12px;
+      background:#e6ffef;
+      border:1px solid #c6f0d3;
+      color:#064e2a;
+      border-radius:8px;
+      margin-top:12px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>GOVERNMENT POLYTECHNIC INSTITUTE — WARI, DIR UPPER</h1>
+      <p>Course Evaluation Form — Student feedback is anonymous and will not be shared with the instructor.</p>
+    </header>
+
+    <form id="evalForm" class="card" autocomplete="off">
+      <div class="intro">
+Student feedback helps faculty redesign and improve their courses. Your responses will remain anonymous. Please focus on your learning experience throughout the entire course.
+      </div>
+
+      <div class="grid">
+        <div>
+          <label class="field">Instructor’s Name</label>
+          <input type="text" name="instructor" placeholder="Instructor's Name" required>
+        </div>
+        <div>
+          <label class="field">Department / Year</label>
+          <input type="text" name="department" placeholder="Department / Year" required>
+        </div>
+        <div>
+          <label class="field">Course number & name</label>
+          <input type="text" name="course" placeholder="Course number and name" required>
+        </div>
+        <div>
+          <label class="field">Student name</label>
+          <input type="text" name="student" placeholder="(optional) Student name — leave blank for anonymous">
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+      <section class="section">
+        <h2>Section 1: Course Content</h2>
+
+        <!-- Questions 1-10 -->
+        <div id="q1" class="question">
+          <div class="qtext">1) The course objectives were clearly defined.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q1" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q1" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q1" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q1" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q1" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q2" class="question">
+          <div class="qtext">2) The course content matched the objectives stated at the beginning.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q2" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q2" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q2" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q2" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q2" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q3" class="question">
+          <div class="qtext">3) The topics covered were relevant to my academic and professional needs.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q3" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q3" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q3" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q3" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q3" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q4" class="question">
+          <div class="qtext">4) The course materials (notes, slides, handouts) were well-organized.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q4" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q4" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q4" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q4" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q4" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q5" class="question">
+          <div class="qtext">5) The course content was up to date and aligned with current industry standards.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q5" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q5" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q5" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q5" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q5" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q6" class="question">
+          <div class="qtext">6) The workload of the course was appropriate for the credit hours.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q6" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q6" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q6" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q6" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q6" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q7" class="question">
+          <div class="qtext">7) The sequence of topics followed a logical order.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q7" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q7" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q7" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q7" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q7" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q8" class="question">
+          <div class="qtext">8) The course provided adequate practical or real-world examples.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q8" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q8" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q8" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q8" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q8" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q9" class="question">
+          <div class="qtext">9) The assessments (quizzes, assignments, exams) accurately measured the learning outcomes.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q9" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q9" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q9" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q9" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q9" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q10" class="question">
+          <div class="qtext">10) The course enhanced my overall understanding of the subject.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q10" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q10" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q10" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q10" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q10" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Section 2 -->
+      <section class="section">
+        <h2>Section 2: Instructor / Teaching Evaluation</h2>
+
+        <!-- Questions 11-20 -->
+        <div id="q11" class="question">
+          <div class="qtext">11) The instructor explained concepts clearly and effectively.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q11" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q11" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q11" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q11" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q11" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q12" class="question">
+          <div class="qtext">12) The instructor demonstrated strong knowledge of the subject.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q12" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q12" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q12" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q12" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q12" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q13" class="question">
+          <div class="qtext">13) The instructor communicated expectations clearly (assignments, grading, attendance).</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q13" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q13" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q13" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q13" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q13" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q14" class="question">
+          <div class="qtext">14) The instructor encouraged student participation.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q14" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q14" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q14" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q14" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q14" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q15" class="question">
+          <div class="qtext">15) The instructor was available and approachable outside of class.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q15" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q15" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q15" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q15" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q15" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q16" class="question">
+          <div class="qtext">16) The instructor used teaching methods that enhanced my learning.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q16" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q16" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q16" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q16" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q16" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q17" class="question">
+          <div class="qtext">17) The instructor provided timely and constructive feedback.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q17" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q17" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q17" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q17" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q17" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q18" class="question">
+          <div class="qtext">18) The pace of teaching was appropriate.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q18" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q18" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q18" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q18" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q18" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q19" class="question">
+          <div class="qtext">19) The instructor maintained discipline and a positive learning environment.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q19" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q19" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q19" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q19" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q19" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q20" class="question">
+          <div class="qtext">20) Overall, the instructor's performance contributed positively to my learning.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q20" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q20" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q20" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q20" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q20" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Section 3 -->
+      <section class="section">
+        <h2>Section 3: Administrative Concerns & Facilities</h2>
+
+        <!-- Questions 21-30 -->
+        <div id="q21" class="question">
+          <div class="qtext">21) The classroom environment was comfortable and suitable for learning.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q21" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q21" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q21" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q21" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q21" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q22" class="question">
+          <div class="qtext">22) The timetable and schedule were managed effectively.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q22" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q22" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q22" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q22" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q22" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q23" class="question">
+          <div class="qtext">23) The availability of required equipment/materials was sufficient.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q23" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q23" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q23" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q23" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q23" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q24" class="question">
+          <div class="qtext">24) The administrative staff responded promptly to queries or issues.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q24" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q24" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q24" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q24" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q24" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q25" class="question">
+          <div class="qtext">25) Important course-related announcements and information were communicated clearly.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q25" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q25" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q25" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q25" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q25" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q26" class="question">
+          <div class="qtext">26) The course registration process was smooth and convenient.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q26" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q26" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q26" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q26" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q26" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q27" class="question">
+          <div class="qtext">27) Required learning materials were provided on time.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q27" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q27" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q27" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q27" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q27" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q28" class="question">
+          <div class="qtext">28) The institution provided adequate support services (IT support, counseling, etc.).</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q28" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q28" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q28" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q28" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q28" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q29" class="question">
+          <div class="qtext">29) The overall course administration was efficient and well-coordinated.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q29" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q29" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q29" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q29" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q29" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+        <div id="q30" class="question">
+          <div class="qtext">30) I am satisfied with the overall management of the course.</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q30" value="Strongly Agree" required>Strongly Agree</label>
+            <label class="opt"><input type="radio" name="q30" value="Agree">Agree</label>
+            <label class="opt"><input type="radio" name="q30" value="Satisfactory">Satisfactory</label>
+            <label class="opt"><input type="radio" name="q30" value="Disagree">Disagree</label>
+            <label class="opt"><input type="radio" name="q30" value="Strongly Disagree">Strongly Disagree</label>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="actions">
+        <button type="reset" class="btn ghost">Reset</button>
+        <button type="submit" class="btn primary">Submit</button>
+      </div>
+
+      <div class="note">Note: Responses are downloaded to your device as a CSV file. For centralized storage (Google Sheet), request the Google Apps Script integration.</div>
+      <div id="success" class="success">Response saved and downloaded. Thank you!</div>
+    </form>
+  </div>
+
+  <script>
+    // helper: escape CSV field
+    function csvEscape(val){
+      if(val === null || val === undefined) return '';
+      const s = String(val);
+      if(s.includes('"') || s.includes(',') || s.includes('\n')){
+        return '"' + s.replace(/"/g,'""') + '"';
+      }
+      return s;
+    }
+
+    document.getElementById('evalForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      // Build object of values in the order we want
+      const fields = [
+        {key:'instructor', label:"Instructor's Name"},
+        {key:'department', label:"Department/Year"},
+        {key:'course', label:"Course number & name"},
+        {key:'student', label:"Student name"}
+      ];
+
+      // add Q1..Q30
+      for(let i=1;i<=30;i++){
+        fields.push({key:'q'+i, label:'Q'+i});
+      }
+
+      // create CSV header & row
+      const header = fields.map(f => csvEscape(f.label)).join(',');
+      const row = fields.map(f => csvEscape(data.get(f.key) || '')).join(',');
+
+      const csv = header + "\n" + row + "\n";
+
+      // create blob and download
+      const now = new Date();
+      const pad = n => String(n).padStart(2,'0');
+      const fn = `evaluation_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}.csv`;
+
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fn;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      // show success briefly
+      const s = document.getElementById('success');
+      s.style.display = 'block';
+      setTimeout(()=> s.style.display = 'none', 5000);
+
+      // reset form for next student (keeps anonymous possibility)
+      form.reset();
+    });
+  </script>
+</body>
+</html>
