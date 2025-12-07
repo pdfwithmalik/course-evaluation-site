@@ -548,64 +548,48 @@ Student feedback helps faculty redesign and improve their courses. Your response
   </div>
 
   <script>
-    // helper: escape CSV field
-    function csvEscape(val){
-      if(val === null || val === undefined) return '';
-      const s = String(val);
-      if(s.includes('"') || s.includes(',') || s.includes('\n')){
-        return '"' + s.replace(/"/g,'""') + '"';
-      }
-      return s;
-    }
+   /* ====== Replace SCRIPT_URL with your Apps Script "exec" URL ====== */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznKLGrEDwvM6EMqyKYvS6w-fZODgVAzTqNWEydQnBjjqLkUtx7-JuEdgKtV2MgXj6V/exec";
 
-    document.getElementById('evalForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
+document.getElementById('evalForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // stop normal submit / page reload
 
-      // Build object of values in the order we want
-      const fields = [
-        {key:'instructor', label:"Instructor's Name"},
-        {key:'department', label:"Department/Year"},
-        {key:'course', label:"Course number & name"},
-        {key:'student', label:"Student name"}
-      ];
+  const form = e.target;
+  const data = new FormData(form);
 
-      // add Q1..Q30
-      for(let i=1;i<=30;i++){
-        fields.push({key:'q'+i, label:'Q'+i});
-      }
+  // Build plain JS object from form data
+  const payload = {
+    instructor: data.get('instructor') || "",
+    department: data.get('department') || "",
+    course: data.get('course') || "",
+    student: data.get('student') || ""
+  };
 
-      // create CSV header & row
-      const header = fields.map(f => csvEscape(f.label)).join(',');
-      const row = fields.map(f => csvEscape(data.get(f.key) || '')).join(',');
+  for (let i = 1; i <= 30; i++) {
+    payload['q' + i] = data.get('q' + i) || "";
+  }
 
-      const csv = header + "\n" + row + "\n";
-
-      // create blob and download
-      const now = new Date();
-      const pad = n => String(n).padStart(2,'0');
-      const fn = `evaluation_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}.csv`;
-
-      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = fn;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-
-      // show success briefly
-      const s = document.getElementById('success');
-      s.style.display = 'block';
-      setTimeout(()=> s.style.display = 'none', 5000);
-
-      // reset form for next student (keeps anonymous possibility)
-      form.reset();
-    });
+  // Send JSON to Google Apps Script
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(response => {
+    // try to parse JSON response if Apps Script returns JSON
+    return response.json ? response.json() : { status: 'success' };
+  })
+  .then(result => {
+    // success path
+    document.getElementById('success').style.display = 'block';
+    setTimeout(()=> document.getElementById('success').style.display = 'none', 4000);
+    form.reset(); // clear form for next user (keeps anonymity option)
+  })
+  .catch(err => {
+    console.error('Submit error:', err);
+    alert('Submission failed. Please try again or contact admin.');
+  });
+});
   </script>
 </body>
 </html>
-
